@@ -77,6 +77,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if let movies = movies {
             return movies.count
@@ -91,29 +92,35 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let movie = movies![indexPath.row]
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
-        
-        let posterPath = movie["poster_path"] as! String
-        
-        let baseURL = "https://image.tmdb.org/t/p/w500"
-        
-        let finalURL = URL(string: baseURL + posterPath)
         cell.title.text = title
         cell.overview.text = overview
+        let baseURL = "https://image.tmdb.org/t/p/w500"
+
         
-        cell.posterView.setImageWith(finalURL!)
-        
-        print("row \(indexPath.row)")
+        if let posterPath = movie["poster_path"] as? String {
+            let finalURL = URL(string: baseURL + posterPath)
+            cell.posterView.setImageWith(finalURL!)
+
+        }
         return cell
     }
 
-    /*
-    // MARK: - Navigation
+        // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)
+        let movie = movies![indexPath!.row]
+        
+        let detailViewController = segue.destination as! DetailViewController
+        
+        detailViewController.movie = movie
+        
+        print("prepare")
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }
