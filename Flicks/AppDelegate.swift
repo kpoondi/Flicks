@@ -19,25 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        let nowPlayingNavigationController = storyBoard.instantiateViewController(withIdentifier: "MoviesNavigationController") as? UINavigationController
-        let nowPlayingViewController = nowPlayingNavigationController?.topViewController as? MoviesViewController
-        nowPlayingViewController?.endPoint = "now_playing"
-        nowPlayingNavigationController?.tabBarItem.title = "Now Playing"
-        nowPlayingNavigationController?.tabBarItem.image = UIImage(named: "noun_716503_cc")
+        let nowPlayingNavigationController = storyBoard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
+        let nowPlayingViewController = nowPlayingNavigationController.topViewController as! MoviesViewController
+        nowPlayingViewController.endPoint = "now_playing"
+        nowPlayingNavigationController.tabBarItem.title = "Now Playing"
+        nowPlayingNavigationController.tabBarItem.image = UIImage(named: "Icon-Small 2")
+
         
-        let topRatedNavigationController = storyBoard.instantiateViewController(withIdentifier: "MoviesNavigationController") as? UINavigationController
-        let topRatedViewController = topRatedNavigationController?.topViewController as? MoviesViewController
-        topRatedViewController?.endPoint = "top_rated"
-        topRatedNavigationController?.tabBarItem.title = "Top Rated"
-        topRatedNavigationController?.tabBarItem.image = UIImage(named: "noun_347132_cc")
+        let topRatedNavigationController = storyBoard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
+        let topRatedViewController = topRatedNavigationController.topViewController as! MoviesViewController
+        topRatedViewController.endPoint = "top_rated"
+        topRatedNavigationController.tabBarItem.title = "Top Rated"
+        topRatedNavigationController.tabBarItem.image = UIImage(named: "Icon-Small")
 
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [nowPlayingNavigationController!, topRatedNavigationController!]
+        tabBarController.viewControllers = [nowPlayingNavigationController, topRatedNavigationController]
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
-        
-        
         
         return true
     }
