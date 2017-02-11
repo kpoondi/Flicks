@@ -92,7 +92,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![Uploading FlicksGif2.gif…]()
+![flicksgif2](https://cloud.githubusercontent.com/assets/21435381/22849761/b9744378-efc5-11e6-9876-7f875f195362.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
